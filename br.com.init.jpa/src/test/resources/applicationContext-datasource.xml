@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:/datasource.properties"/>
+
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+        <property name="url" value="${database.url}" />
+        <property name="username" value="${database.user}" />
+        <property name="password" value="${database.password}" />
+    </bean> 
+
+<!--  
+
+	<bean id="dataSource" class="oracle.jdbc.pool.OracleDataSource" destroy-method="close">
+		<property name="URL" value="${database.url}" />
+		<property name="user" value="${database.user}" />
+		<property name="password" value="${database.password}" />
+		
+		<property name="connectionCachingEnabled" value="true" />
+		<property name="connectionCacheProperties">
+			<value>
+				MinLimit = 2
+				MaxLimit = 20
+				InactivityTimeout = 1800
+				PropertyCheckInterval = 60
+				InitialLimit = 2
+				ValidateConnection = true
+			</value>
+		</property>
+	</bean>
+
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">    
+		<property name="driverClass" value="${database.driver}" />
+		<property name="jdbcUrl" value="${database.url}" />
+		<property name="user" value="${database.user}"/>
+		<property name="password" value="${database.password}"/>
+
+		<property name="minPoolSize" value="2"/>    
+		<property name="maxPoolSize" value="20"/>    
+		<property name="maxStatements" value="50"/>
+		<property name="idleConnectionTestPeriod" value="3000"/>
+	</bean> 
+ -->
+</beans>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+	debug="false">
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{dd/MM/yy hh:mm:ss:sss}] %5p %c{2}: %m%n" />
+		</layout>
+	</appender>
+
+
+	<category name="br.com.admin" additivity="false">
+		<priority value="DEBUG" />
+		<appender-ref ref="stdout" />
+	</category>
+
+	<category name="org.springframework" additivity="false">
+		<priority value="WARN" />
+		<appender-ref ref="stdout" />
+	</category>
+	<category name="org.hibernate" additivity="false">
+		<priority value="WARN" />
+		<appender-ref ref="stdout" />
+	</category>
+	
+	<category name="com.mchange" additivity="false">
+		<priority value="WARN" />
+		<appender-ref ref="stdout" />
+	</category>
+
+
+	<root>
+		<priority value="WARN" />
+		<appender-ref ref="stdout" />
+	</root>
+
+</log4j:configuration>
