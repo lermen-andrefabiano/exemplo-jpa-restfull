@@ -18,14 +18,14 @@ public class ModuloBean {
 	
 	private List<Modulo> modulos;
 	
+	public ModuloBean(){
+	}	
+	
 	@Inject
 	public ModuloBean(ModuloService moduloService){
 		this.moduloService = moduloService;		
-	}
-	
-	public ModuloBean(){
-	}
-	
+	}	
+
 	@PostConstruct
 	private void init(){
 		modulos = this.moduloService.listarAtivos();
